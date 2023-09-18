@@ -1,14 +1,13 @@
 # Importing Required Libraries
 import streamlit as st
-import PyPDF2
+from PyPDF2 import PdfReader
 import re
 
 # Function to Extract Text from PDF
 def read_pdf(file):
-    pdf_reader = PyPDF2.PdfReader(file)
+    pdf_reader = PdfReader(file)
     text = ""
-    for i in range(len(pdf_reader.pages)):
-        page = pdf_reader.pages[i]
+    for page in pdf_reader.pages:
         text += page.extract_text()
     return text
 
